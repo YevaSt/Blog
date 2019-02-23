@@ -1,0 +1,37 @@
+{%extends "base.html"%}
+{%block content%}
+<div class="progress">
+  <div class="progress-bar bg-success" role="progressbar" style="width: 25%" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div>
+</div>
+<div class="progress">
+  <div class="progress-bar bg-info" role="progressbar" style="width: 50%" aria-valuenow="50" aria-valuemin="0" aria-valuemax="100"></div>
+</div>
+<div class="progress">
+  <div class="progress-bar bg-warning" role="progressbar" style="width: 75%" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100"></div>
+</div>
+<div class="progress">
+  <div class="progress-bar bg-danger" role="progressbar" style="width: 100%" aria-valuenow="100" aria-valuemin="0" aria-valuemax="100"></div>
+</div>
+<h2>{{post.title}}</h2>
+<p>{{post.text}}</p>
+{%for comment in post.comment_set.all%}
+<h5>
+  {{comment.username}}
+</h5>
+<p>
+  {{comment.text}}
+</p>
+{%endfor%}
+<form method="Post"> {%csrf_token%}
+  <table>
+    {{form.as_table}}
+    <tr>
+      <td>
+        <button class=" btn btn-danger">
+          post
+        </button>
+      </td>
+    </tr>
+  </table>
+</form>
+{%endblock%}

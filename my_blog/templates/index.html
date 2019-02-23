@@ -1,0 +1,18 @@
+{%extends "base.html" %}
+   {%block content%}
+
+    {% for post in posts %}
+        <div class="media">
+  <div class=" col-md-2">{{post.user}}</div>
+  <div class="media-body">
+    <h5 class="mt-0">{{post.title}}</h5>
+    {{post.text|truncatewords:40}}
+      <br><a href="/post/{{post.id}}">
+          read more
+      </a>
+  </div>
+</div><br>
+
+    {% endfor %}
+
+{%endblock%}
